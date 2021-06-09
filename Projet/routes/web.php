@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\EquipeController;
 use App\Http\Controllers\AdherentController;
+use App\Http\Controllers\ClubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,6 @@ use App\Http\Controllers\AdherentController;
 */
 
 Route::get('/', [AccueilController::class, 'index']);
+Route::resource('clubs', ClubController::class);
 Route::resource('equipes', EquipeController::class);
 Route::resource('adherents', AdherentController::class);

@@ -14,4 +14,8 @@ class Equipe extends Model
     public function club() {
         return $this->belongsTo(Club::class);
     }
+
+    public function adherents() {
+        return $this->belongsToMany(Adherent::class);
+    }
 }

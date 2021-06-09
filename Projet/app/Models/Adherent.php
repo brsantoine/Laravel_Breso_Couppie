@@ -14,4 +14,8 @@ class Adherent extends Model
     public function club() {
         return $this->belongsTo(Club::class);
     }
+
+    public function equipes() {
+        return $this->belongsToMany(Equipe::class);
+    }
 }

@@ -1,35 +1,34 @@
 @extends('layouts.layout')
 
 @section('titrePage')
-    Information sur l'équipe
+    Information sur le club
 @endsection
 
 @section('titreItem')
-    <h3>Information équipe</h3>
+    <h3>Information club</h3>
 @endsection
 
 @section('contenu')
     <div class="card">
         <header class="card-header">
-            <h5 class="card-header-title">Nom de l'équipe : {{ $equipe->nom }}</h5>
+            <h5 class="card-header-title">Club {{ $club->nom }}</h5>
+            <h6 class="card-header-title">Ses équipes</h6>
         </header>
         <div class="card-content">
             <div class="content">
-            <table class="table-is-hoverable">
+                <table class="table-is-hoverable">
                     <thead>
                         <tr>
                             <th>Nom</th>
-                            <th>Prenom</th>
                             <th></th>
                         </tr>
                     </thead>
-                    @foreach($equipe->adherents as $adherent)
+                    @foreach($equipes as $equipe)
                         <tr>
-                            <td>{{ $adherent->nom }}</td>
-                            <td>{{ $adherent->prenom }}</td>
-                            <td><a class="btn btn-primary" href="{{ route('adherents.show', $adherent->id) }}">Détails</a></td>
+                            <td><strong>{{ $equipe->nom }}</strong></td>
+                            <td><a class="btn btn-primary" href="{{ route('equipes.show', $equipe->id) }}">Détails</a></td>
                             <!--<td>
-                                <form action="{{ route('adherents.destroy', $adherent->id) }}" method="post">
+                                <form action="{{ route('equipes.destroy', $equipe->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Supprimer</button>
@@ -38,6 +37,7 @@
                         </tr>
                     @endforeach
                 </table>
+            </div>
         </div>
     </div>
 @endsection

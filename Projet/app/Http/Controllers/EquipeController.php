@@ -48,6 +48,7 @@ class EquipeController extends Controller
     public function show(Equipe $equipe)
     {
         $club = $equipe->club;
+        $equipe->with('adherents')->get();
         return view('equipe', compact('equipe', 'club'));
     }
 

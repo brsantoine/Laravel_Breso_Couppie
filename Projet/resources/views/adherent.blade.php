@@ -4,6 +4,10 @@
     Information sur le joueur
 @endsection
 
+@section('titreItem')
+    <h3>Information adhérent</h3>
+@endsection
+
 @section('contenu')
     <div class="card">
         <header class="card-header">

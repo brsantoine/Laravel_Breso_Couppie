@@ -14,7 +14,8 @@ class ClubController extends Controller
      */
     public function index()
     {
-        //
+        $clubs = Club::all();
+        return view('clubs', compact('clubs'));
     }
 
     /**
@@ -47,6 +48,8 @@ class ClubController extends Controller
     public function show(Club $club)
     {
         //
+        $equipes =Club::find($club->id)->equipes;
+        return view('club', compact('club', 'equipes'));
     }
 
     /**
