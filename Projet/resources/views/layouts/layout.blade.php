@@ -20,6 +20,9 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li>
+                            <a class="nav-link" href="{{url('/adherents')}}">Les Joueurs</a>
+                        </li>
+                        <li>
                             <a class="nav-link" href="{{url('/equipes')}}">Les Équipes</a>
                         </li>
                         <li>

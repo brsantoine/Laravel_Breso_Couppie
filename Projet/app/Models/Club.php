@@ -13,6 +13,7 @@ class Club extends Model
     protected $fillable = ['club_id', 'nom', 'prenom', 'age', 'sexe'];
 
     public function adherents() {
+        $fillable = ['club_id', 'nom', 'prenom', 'age', 'sexe'];
         return $this->hasMany(Adherent::class);
     }
 

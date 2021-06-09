@@ -14,7 +14,8 @@ class AdherentController extends Controller
      */
     public function index()
     {
-        //
+        $adherents = Adherent::all();
+        return view('adherents', compact('adherents'));
     }
 
     /**
@@ -46,7 +47,8 @@ class AdherentController extends Controller
      */
     public function show(Adherent $adherent)
     {
-        //
+        $club = $adherent->club;
+        return view('adherent', compact('adherent', 'club'));
     }
 
     /**
