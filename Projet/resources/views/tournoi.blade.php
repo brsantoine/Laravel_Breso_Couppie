@@ -29,10 +29,11 @@
                             <td><strong>{{ $match->date }}</strong></td>
                             @if ($match->date > $today)
                             <td><strong>À venir</strong></td>
+                            <td></td>
                             @else
                             <td><strong>{{ $match->score }}</strong></td>
-                            @endif
                             <td><a class="btn btn-primary" href="{{ route('matches.show', $match->id) }}">Détails</a></td>
+                            @endif
                             <!--<td>
                                 <form action="{{ route('matches.destroy', $match->id) }}" method="post">
                                     @csrf

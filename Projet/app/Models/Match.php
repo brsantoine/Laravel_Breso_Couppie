@@ -20,6 +20,6 @@ class Match extends Model
     }
 
     public function adherents() {
-        return $this->belongsToMany(Adherent::class);
+        return $this->belongsToMany(Adherent::class)->withPivot('panier2points', 'panier3points', 'fautesCommises');
     }
 }
