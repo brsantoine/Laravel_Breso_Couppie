@@ -21,7 +21,7 @@
     <div class="card">
         <div class="card-header">
             <div class="content">
-                <table class="table-is-hoverable">
+                <table class="table table-striped table-is-hoverable">
                     <thead>
                         <tr>
                             <th>Nom</th>

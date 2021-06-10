@@ -15,7 +15,7 @@
         </header>
         <div class="card-content">
             <div class="content">
-            <table class="table-is-hoverable">
+                <table class="table table-striped table-is-hoverable">
                     <thead>
                         <tr>
                             <th>Nom</th>
@@ -38,6 +38,7 @@
                         </tr>
                     @endforeach
                 </table>
+            </div>
         </div>
     </div>
 @endsection

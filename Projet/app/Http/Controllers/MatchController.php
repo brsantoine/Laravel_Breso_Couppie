@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Match;
+use App\Models\Equipe;
 use Illuminate\Http\Request;
 
 class MatchController extends Controller
@@ -46,10 +47,10 @@ class MatchController extends Controller
      */
     public function show(Match $match)
     {
-        $equipeA = $match->equipeA; 
-        $equipeB = $match->equipeB;
+        $equipeA = Equipe::find($match->equipeA_id); 
+        $equipeB = Equipe::find($match->equipeB_id);
         $match->with('adherents')->get();
-        return view('matches', compact('match', 'equipeA', 'equipeB'));
+        return view('match', compact('match', 'equipeA', 'equipeB'));
     }
 
     /**

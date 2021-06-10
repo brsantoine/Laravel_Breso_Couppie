@@ -16,7 +16,7 @@
         </header>
         <div class="card-content">
             <div class="content">
-                <table class="table-is-hoverable">
+                <table class="table table-striped table-is-hoverable">
                     <thead>
                         <tr>
                             <th>Date</th>

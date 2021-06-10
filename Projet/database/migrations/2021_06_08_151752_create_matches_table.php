@@ -21,9 +21,13 @@ class CreateMatchesTable extends Migration
             $table->foreign('equipeA_id')->references('id')->on('equipes')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('equipeB_id');
             $table->foreign('equipeB_id')->references('id')->on('equipes')->onDelete('cascade')->onUpdate('cascade');
-            $table->text('score');
-            $table->text('date');
-            $table->text('duree');
+            $table->text('score')->default($value = "0 - 0");
+
+            $today = getdate();
+            $today = $today['year'] . '-' . ($today['mon']-10 < 0 ? '0'.$today['mon']:$today['mon']) . '-' . ($today['mday']-10 < 0 ? '0'.$today['mday']:$today['mday']);
+            $table->text('date')->default($today);
+            
+            $table->text('duree')->default($value = 40);
             $table->timestamps();
         });
     }

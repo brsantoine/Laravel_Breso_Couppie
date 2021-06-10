@@ -20,6 +20,9 @@ class CreateAdherentMatchTable extends Migration
             $table->unsignedBigInteger('match_id');
             $table->foreign('match_id')->references('id')->on('matches')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            $table->unsignedInteger('panier2points')->default($value = 0);
+            $table->unsignedInteger('panier3points')->default($value = 0);
+            $table->unsignedInteger('fautesCommises')->default($value = 0);
         });
     }
 
