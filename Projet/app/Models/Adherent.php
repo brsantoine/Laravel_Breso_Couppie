@@ -18,4 +18,8 @@ class Adherent extends Model
     public function equipes() {
         return $this->belongsToMany(Equipe::class);
     }
+
+    public function matches() {
+        return $this->belongsToMany(Match::class);
+    }
 }

@@ -48,7 +48,7 @@ class ClubController extends Controller
     public function show(Club $club)
     {
         //
-        $equipes =Club::find($club->id)->equipes;
+        $equipes = Club::find($club->id)->equipes;
         return view('club', compact('club', 'equipes'));
     }
 

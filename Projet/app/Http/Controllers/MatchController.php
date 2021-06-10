@@ -46,7 +46,10 @@ class MatchController extends Controller
      */
     public function show(Match $match)
     {
-        //
+        $equipeA = $match->equipeA; 
+        $equipeB = $match->equipeB;
+        $match->with('adherents')->get();
+        return view('matches', compact('match', 'equipeA', 'equipeB'));
     }
 
     /**

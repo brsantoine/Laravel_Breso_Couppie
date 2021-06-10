@@ -11,6 +11,12 @@ class Equipe extends Model
 
     public $timestamps = false;
 
+    protected $fillabe = ['tournoi_id', 'equipeA_id', 'equipeB_id', 'score', 'date', 'duree'];
+
+    public function matches() {
+        return $this->hasMany(Match::class);
+    }
+
     public function club() {
         return $this->belongsTo(Club::class);
     }

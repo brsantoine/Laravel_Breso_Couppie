@@ -14,7 +14,8 @@ class TournoiController extends Controller
      */
     public function index()
     {
-        //
+        $tournois = Tournoi::orderByDesc('datefin')->get();
+        return view('tournois', compact('tournois'));
     }
 
     /**
@@ -46,7 +47,12 @@ class TournoiController extends Controller
      */
     public function show(Tournoi $tournoi)
     {
-        //
+        $matches = Tournoi::find($tournoi->id)->matches->sortByDesc('datefin');
+
+        $today = getdate();
+        $today = $today['year'] . '-' . ($today['mon']-10 < 0 ? '0'.$today['mon']:$today['mon']) . '-' . ($today['mday']-10 < 0 ? '0'.$today['mday']:$today['mday']);
+
+        return view('tournoi', compact('tournoi', 'matches', 'today'));
     }
 
     /**
