@@ -11,6 +11,8 @@ class Adherent extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['club_id', 'nom', 'prenom', 'age', 'sexe'];
+
     public function club() {
         return $this->belongsTo(Club::class);
     }

@@ -27,6 +27,8 @@
                             <th>Nom</th>
                             <th>Prenom</th>
                             <th></th>
+                            <th><a class="btn btn-success" href="{{ route('adherents.create') }}">Créer joueur</a></th>
+                            <th></th>
                         </tr>
                     </thead>
                     @foreach($adherents as $adherent)
@@ -34,13 +36,14 @@
                             <td>{{ $adherent->nom }}</td>
                             <td>{{ $adherent->prenom }}</td>
                             <td><a class="btn btn-primary" href="{{ route('adherents.show', $adherent->id) }}">Détails</a></td>
-                            <!--<td>
+                            <td><a class="btn btn-warning" href="{{ route('adherents.edit', $adherent->id) }}">Modifier</a></td>
+                            <td>
                                 <form action="{{ route('adherents.destroy', $adherent->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Supprimer</button>
                                 </form>
-                            </td>-->
+                            </td>
                         </tr>
                     @endforeach
                 </table>

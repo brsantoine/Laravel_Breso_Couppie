@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Adherent;
 use Illuminate\Http\Request;
+use App\Models\Club;
+use App\Http\Requests\InsertAdherentRequest;
 
 class AdherentController extends Controller
 {
@@ -25,18 +27,20 @@ class AdherentController extends Controller
      */
     public function create()
     {
-        //
+        $clubs = Club::all();
+        return view('createAdherent', compact('clubs'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\InsertAdherentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InsertAdherentRequest $request)
     {
-        //
+        Adherent::create($request->all());
+        return back()->with('info', 'L\'adhérent a bien été ajouté à la base de données');
     }
 
     /**
@@ -59,19 +63,21 @@ class AdherentController extends Controller
      */
     public function edit(Adherent $adherent)
     {
-        //
+        $clubs = Club::all();
+        return view('editAdherent', compact('adherent', 'clubs'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\InsertAdherentRequest  $request
      * @param  \App\Models\Adherent  $adherent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Adherent $adherent)
+    public function update(InsertAdherentRequest $request, Adherent $adherent)
     {
-        //
+        $adherent->update($request->all());
+        return back()->with('info', 'L\'adhérent a bien été modifié dans la base de données');
     }
 
     /**
@@ -82,6 +88,7 @@ class AdherentController extends Controller
      */
     public function destroy(Adherent $adherent)
     {
-        //
+        $adherent->delete();
+        return back()->with('info', 'L\'adhérent a bien été supprimé de la base de données');
     }
 }
