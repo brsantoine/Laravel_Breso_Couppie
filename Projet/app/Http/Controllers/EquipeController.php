@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipe;
 use Illuminate\Http\Request;
+use App\Models\Club;
+use App\Http\Requests\InsertEquipeRequest;
 
 class EquipeController extends Controller
 {
@@ -25,18 +27,20 @@ class EquipeController extends Controller
      */
     public function create()
     {
-        //
+        $clubs = Club::all();
+        return view('createEquipe', compact('clubs'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\InsertEquipeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InsertEquipeRequest $request)
     {
-        //
+        Equipe::create($request->all());
+        return back()->with('info', 'L\'équipe a bien été ajouté.');
     }
 
     /**
@@ -60,19 +64,21 @@ class EquipeController extends Controller
      */
     public function edit(Equipe $equipe)
     {
-        //
+        $clubs = Club::all();
+        return view('editEquipe', compact('equipe', 'clubs'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\InsertEquipeRequest  $request
      * @param  \App\Models\Equipe  $equipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipe $equipe)
+    public function update(InsertEquipeRequest $request, Equipe $equipe)
     {
-        //
+        $equipe->update($request->all());
+        return back()->with('info', 'L\'équipe a bien été modifié dans la base de données');
     }
 
     /**
@@ -83,6 +89,7 @@ class EquipeController extends Controller
      */
     public function destroy(Equipe $equipe)
     {
-        //
+        $equipe->delete();
+        return back()->with('info', 'L\'équipe a bien été supprimé dans la base de données');
     }
 }

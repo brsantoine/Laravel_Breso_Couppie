@@ -26,19 +26,22 @@
                         <tr>
                             <th>Nom</th>
                             <th></th>
+                            <th><a class="btn btn-success" href="{{ route('equipes.create') }}">Créer équipe</a></th>
+                            <th></th>
                         </tr>
                     </thead>
                     @foreach($equipes as $equipe)
                         <tr>
                             <td><strong>{{ $equipe->nom }}</strong></td>
                             <td><a class="btn btn-primary" href="{{ route('equipes.show', $equipe->id) }}">Détails</a></td>
-                            <!--<td>
+                            <td><a class="btn btn-warning" href="{{ route('equipes.edit', $equipe->id) }}">Modifier</a></td>
+                            <td>
                                 <form action="{{ route('equipes.destroy', $equipe->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Supprimer</button>
                                 </form>
-                            </td>-->
+                            </td>
                         </tr>
                     @endforeach
                 </table>

@@ -11,9 +11,10 @@ class Equipe extends Model
 
     public $timestamps = false;
 
-    protected $fillabe = ['tournoi_id', 'equipeA_id', 'equipeB_id', 'score', 'date', 'duree'];
+    protected $fillable = ['club_id', 'nom'];
 
     public function matches() {
+        $fillable = ['tournoi_id', 'equipeA_id', 'equipeB_id', 'score', 'date', 'duree'];
         return $this->hasMany(Match::class);
     }
 

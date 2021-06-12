@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Club;
 use Illuminate\Http\Request;
+use App\Http\Requests\InsertClubRequest;
 
 class ClubController extends Controller
 {
@@ -25,18 +26,19 @@ class ClubController extends Controller
      */
     public function create()
     {
-        //
+        return view('createClub');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\InsertClubRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InsertClubRequest $request)
     {
-        //
+        Club::create($request->all());
+        return back()->with('info', 'Le club a bien été ajouté.');
     }
 
     /**
@@ -60,19 +62,20 @@ class ClubController extends Controller
      */
     public function edit(Club $club)
     {
-        //
+        return view('editClub', compact('club'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\InsertClubRequest  $request
      * @param  \App\Models\Club  $club
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Club $club)
+    public function update(InsertClubRequest $request, Club $club)
     {
-        //
+        $club->update($request->all());
+        return back()->with('info', 'Le club a bien été modifié dans la base de données');
     }
 
     /**
@@ -83,6 +86,7 @@ class ClubController extends Controller
      */
     public function destroy(Club $club)
     {
-        //
+        $club->delete();
+        return back()->with('info', 'Le club a bien été supprimé de la base de données');
     }
 }
