@@ -63,8 +63,18 @@ class AdherentController extends Controller
      */
     public function edit(Adherent $adherent)
     {
+        $equipesClub = Club::find($adherent->club_id)->equipes;
+
+        $adherent->with('equipes')->get();
+        $adherent->equipes = $adherent->equipes->toArray();
+
+        $equipesAdherent = array();
+        if(array_key_exists(0, $adherent->equipes)) {
+            $equipesAdherent = array_keys(array_flip($adherent->equipes[0]["pivot"]), "equipe_id");
+        }
+        
         $clubs = Club::all();
-        return view('editAdherent', compact('adherent', 'clubs'));
+        return view('editAdherent', compact('adherent', 'clubs', 'equipesClub', 'equipesAdherent'));
     }
 
     /**
@@ -76,8 +86,25 @@ class AdherentController extends Controller
      */
     public function update(InsertAdherentRequest $request, Adherent $adherent)
     {
+        /*$adherent->with('equipes')->get();
+        $adherent->equipes = $adherent->equipes->toArray();
+        if(array_key_exists(0, $adherent->equipes)) {
+            $equipesAdherent = array_keys(array_flip($adherent->equipes[0]["pivot"]), "equipe_id");
+            foreach($equipesAdherent as $eq) {
+                $adherent->equipes()->detach($eq);
+            }
+        }
+
+        if(!empty($request->input('id'))) {
+            foreach($request->input('id') as $check) {
+                $adherent->equipes()->attach($check);
+            }
+        }*/
+        
+        //$adherent->save();
+
         $adherent->update($request->all());
-        return back()->with('info', 'L\'adhérent a bien été modifié dans la base de données');
+        return back()->with('info', 'L\'adhérent a bien été modifié de la base de données');
     }
 
     /**

@@ -57,9 +57,21 @@
                             <label for="sexe">Sexe : </label>
                                 <input type="radio" id="sexe" name="sexe" value="M" @if ($adherent->sexe == 'M') checked @endif>
                                 <label for="sexe">M</label>
-                                <input type="radio" id="sexe" name="sexe" value="F" @if ($adherent->sexe == 'M') checked @endif>
+                                <input type="radio" id="sexe" name="sexe" value="F" @if ($adherent->sexe == 'F') checked @endif>
                                 <label for="sexe">F</label>
                             @error('sexe')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    <br>
+
+                        <div class="form-group">
+                            <label for="club_id">Équipes : (ne fonctionne pas)</label>
+                            @foreach($equipesClub as $equipe)
+                                <input type="checkbox" id="id" name="id[]" value="{{$equipe->id}}" @if (in_array($equipe->id, $equipesAdherent)) checked @endif>
+                                <label for="id">{{$equipe->nom}}</label>
+                            @endforeach
+                            @error('id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
