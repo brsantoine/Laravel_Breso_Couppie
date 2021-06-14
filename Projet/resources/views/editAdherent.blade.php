@@ -15,6 +15,7 @@
     <br>
     <div class="container">
         <div class="row card text-white bg-dark">
+        @auth
             <h4 class="card-header">Créer un joueur</h4>
             <div class="card-body">
                 <form action="{{ route('adherents.update',$adherent->id)}}" method="POST">
@@ -79,6 +80,10 @@
                     <button type="submit" class="btn btn-secondary">Modifier</button>
                 </form>
             </div>
+            @else
+            <h4 class="card-header">Accès interdit</h4>
+            <div class="card-body"><label for="">Vous n'êtes pas autorisé à consulter cette page.</label></div>
+            @endauth
         </div>
     </div>
 @endsection

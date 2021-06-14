@@ -26,14 +26,17 @@
                         <tr>
                             <th>Nom</th>
                             <th></th>
+                            @auth
                             <th><a class="btn btn-success" href="{{ route('clubs.create') }}">Créer club</a></th>
                             <th></th>
+                            @endauth
                         </tr>
                     </thead>
                     @foreach($clubs as $club)
                         <tr>
                             <td>{{ $club->nom }}</td>
                             <td><a class="btn btn-primary" href="{{ route('clubs.show', $club->id) }}">Détails</a></td>
+                            @auth
                             <td><a class="btn btn-warning" href="{{ route('clubs.edit', $club->id) }}">Modifier</a></td>
                             <td>
                                 <form action="{{ route('clubs.destroy', $club->id) }}" method="post">
@@ -42,6 +45,7 @@
                                     <button class="btn btn-danger" type="submit">Supprimer</button>
                                 </form>
                             </td>
+                            @endauth
                         </tr>
                     @endforeach
                 </table>

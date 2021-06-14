@@ -28,6 +28,8 @@
                             <th>Date début</th>
                             <th>Date fin</th>
                             <th></th>
+                            @auth
+                            @endauth
                         </tr>
                     </thead>
                     @foreach($tournois as $tournoi)
@@ -36,6 +38,8 @@
                             <td>{{ $tournoi->datedebut }}</td>
                             <td>{{ $tournoi->datefin }}</td>
                             <td><a class="btn btn-primary" href="{{ route('tournois.show', $tournoi->id) }}">Voir matchs</a></td>
+                            @auth
+                            @endauth
                             <!--<td>
                                 <form action="{{ route('tournois.destroy', $tournoi->id) }}" method="post">
                                     @csrf

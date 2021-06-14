@@ -20,8 +20,15 @@ use App\Http\Controllers\MatchController;
 */
 
 Route::get('/', [AccueilController::class, 'index']);
+
+/*Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');*/
+
 Route::resource('clubs', ClubController::class);
 Route::resource('equipes', EquipeController::class);
 Route::resource('adherents', AdherentController::class);
 Route::resource('tournois', TournoiController::class);
 Route::resource('matches', MatchController::class);
+
+require __DIR__.'/auth.php';

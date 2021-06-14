@@ -15,6 +15,7 @@
     <br>
     <div class="container">
         <div class="row card text-white bg-dark">
+        @auth
             <h4 class="card-header">Modifier une équipe</h4>
             <div class="card-body">
                 <form action="{{ route('equipes.update',$equipe->id)}}" method="POST">
@@ -44,6 +45,10 @@
                     <button type="submit" class="btn btn-secondary">Modifier</button>
                 </form>
             </div>
+            @else
+            <h4 class="card-header">Accès interdit</h4>
+            <div class="card-body"><label for="">Vous n'êtes pas autorisé à consulter cette page.</label></div>
+            @endauth
         </div>
     </div>
 @endsection
